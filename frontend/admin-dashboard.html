@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Resources</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources.css">
+</head>
+<body>
+    <div class="resources-container">
+        <div class="header">
+            <h1>Manage Resources 👑</h1>
+            <div class="header-buttons">
+                <button onclick="goToDashboard()" class="btn-secondary">Dashboard</button>
+                <button onclick="logout()" class="btn-logout">Logout</button>
+            </div>
+        </div>
+
+        <div class="add-resource-section">
+            <h2>Add New Resource</h2>
+            <form id="addResourceForm">
+                <div class="input-box">
+                    <input type="text" id="title" required>
+                    <label for="title">Title</label>
+                </div>
+                <div class="input-box">
+                    <textarea id="description" required></textarea>
+                    <label for="description">Description</label>
+                </div>
+                <div class="input-box">
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Tutorial">Tutorial</option>
+                        <option value="Documentation">Documentation</option>
+                        <option value="Video">Video</option>
+                        <option value="Article">Article</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <!-- File Upload Input -->
+                <div class="input-box">
+                    <input type="file" id="file" required>
+                    <label for="file" style="position: relative; top: 0; left: 0;">Choose File (PDF, DOC, etc.)</label>
+                </div>
+                
+                <p class="message" id="addMessage"></p>
+                <button type="submit" class="btn">Add Resource</button>
+            </form>
+        </div>
+
+        <div class="resources-list-section">
+            <h2>All Resources</h2>
+            <div id="resourcesList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="resources.js"></script>
+</body>
+</html>
