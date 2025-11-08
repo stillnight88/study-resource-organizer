@@ -1,15 +1,46 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+  console.log('Created uploads folder');
+}
+
+app.use('/uploads', express.static('uploads'));
 mongoose.connect('mongodb://localhost:27017/studyorganizer')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('Error:', err));
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/') 
+  },
+  filename: function (req, file, cb) {
+   
+    const uniqueName = Date.now() + '-' + file.originalname;
+    console.log('Saving file as:', uniqueName);
+    cb(null, uniqueName);
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 },
+  fileFilter: function (req, file, cb) {
+    console.log('File received:', file.originalname);
+    cb(null, true);
+  }
+});
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -23,7 +54,7 @@ const User = mongoose.model('User', userSchema);
 async function createAdminAccount() {
   try {
     const adminExists = await User.findOne({ email: 'admin@study.com' });
-    
+
     if (!adminExists) {
       await User.create({
         name: 'Admin',
@@ -43,22 +74,22 @@ createAdminAccount();
 app.post('/signup', async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    
+
     const existingUser = await User.findOne({ email: email });
-    
+
     if (existingUser) {
       return res.status(400).json({ message: 'Email already registered' });
     }
-    
+
     await User.create({
       name: name,
       email: email,
       password: password,
       role: 'user'
     });
-    
+
     res.status(201).json({ message: 'Account created successfully' });
-    
+
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
@@ -67,17 +98,17 @@ app.post('/signup', async (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     const user = await User.findOne({ email: email });
-    
+
     if (!user) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
-    
+
     if (user.password !== password) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
-    
+
     res.json({
       message: 'Login successful',
       user: {
@@ -86,10 +117,20 @@ app.post('/login', async (req, res) => {
         role: user.role
       }
     });
-    
+
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
+});
+
+
+const resourceSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  category: String,
+  filePath: String,      // Path to uploaded file
+  fileName: String,      // Original file name
+  createdAt: { type: Date, default: Date.now }
 });
 
 const PORT = 5000;
