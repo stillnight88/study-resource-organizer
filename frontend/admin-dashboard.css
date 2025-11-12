@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f4f7;
+    margin: 0;
+    padding: 0;
+}
+
+.resources-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    padding: 20px 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.header-buttons button {
+    margin-left: 10px;
+}
+
+.btn-secondary,
+.btn-logout,
+.btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.btn-logout {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.add-resource-section {
+    margin-top: 25px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.input-box {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.input-box input,
+.input-box textarea,
+.input-box select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    resize: vertical;
+}
+
+.message {
+    color: #27ae60;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.resources-list-section {
+    margin-top: 30px;
+}
+
+.resources-list-section h2 {
+    margin-bottom: 10px;
+}
+
+#resourcesList {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    min-height: 60px;
+    background-color: #fafafa;
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
