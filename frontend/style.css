@@ -1,100 +1,97 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: #f4f6fa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f6fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .container {
-    width: 360px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    padding: 35px 30px;
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 30px 25px;
 }
 
 .form-box h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
-    font-size: 22px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
 }
 
 .input-box {
-    position: relative;
-    margin-bottom: 20px;
+  margin-bottom: 15px;
+  position: relative;
 }
 
 .input-box input {
-    width: 100%;
-    padding: 12px 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    font-size: 15px;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
 }
 
 .input-box label {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-size: 14px;
-    color: #777;
-    pointer-events: none;
-    transition: 0.2s ease;
-}
-
-.btn {
-    width: 100%;
-    padding: 12px;
-    background: #6c63ff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.btn:hover {
-    background: #5a54e6;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.85em;
+  color: #3b5bdb;
 }
 
 .message {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 14px;
-    min-height: 16px;
+  font-size: 0.9em;
+  color: #e03131;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.message.error {
-    color: #e74c3c;
+button.btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #3b5bdb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.message.success {
-    color: #2ecc71;
+button.btn:hover {
+  background-color: #364fc7;
 }
 
 .switch {
-    text-align: center;
-    margin-top: 18px;
-    color: #555;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #555;
 }
 
 .switch a {
-    color: #6c63ff;
-    text-decoration: none;
-    font-weight: 600;
+  color: #3b5bdb;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .switch a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 25px 20px;
+  }
 }
