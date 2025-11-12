@@ -88,16 +88,15 @@ button.btn:hover {
 .switch a:hover {
   text-decoration: underline;
 }
-/* ✅ LOGIN PAGE ONLY */
+
 .login-page .container {
   display: flex;
   width: 950px;
   height: 550px;
   background: #fff;
-  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  max-width: none; /* override single-form size */
+  max-width: none;
   padding: 0;
 }
 
